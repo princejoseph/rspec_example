@@ -6,19 +6,30 @@ RSpec.describe Car do
   let(:colour) { 'White' }
 
   describe '#having_colour?' do
-    it 'gives true for the same colour' do
-      expect(car.having_colour?('White')).to eq(true)
+    subject { car.having_colour?(colour_name) }
+
+    context 'when colourname is same as car colour' do
+      let(:colour_name) { 'White' }
+
+      it 'gives true for the same colour' do
+        expect(subject).to eq(true)
+      end
     end
 
-    it 'gives false for different colour' do
-      expect(car.having_colour?('Red')).to eq(false)
+    context 'when colourname is different from car colour' do
+      let(:colour_name) { 'Red' }
+
+      it 'gives false for different colour' do
+        expect(subject).to eq(false)
+      end
     end
 
-    context 'when colour is small letters' do
+    context 'when colour is in small letters' do
+      let(:colour_name) { 'White' }
       let(:colour) { 'white' }
 
       it 'gives true regardless of case' do
-        expect(car.having_colour?('White')).to eq(true)
+        expect(subject).to eq(true)
       end
     end
   end

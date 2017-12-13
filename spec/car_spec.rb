@@ -11,26 +11,20 @@ RSpec.describe Car do
     context 'when colourname is same as car colour' do
       let(:colour_name) { 'White' }
 
-      it 'gives true for the same colour' do
-        expect(subject).to eq(true)
-      end
+      it { is_expected.to eq(true) }
     end
 
     context 'when colourname is different from car colour' do
       let(:colour_name) { 'Red' }
 
-      it 'gives false for different colour' do
-        expect(subject).to eq(false)
-      end
+      it { is_expected.to eq(false) }
     end
 
-    context 'when colour is in small letters' do
+    context 'when colour is in small letters with respect to colour_name' do
       let(:colour_name) { 'White' }
       let(:colour) { 'white' }
 
-      it 'gives true regardless of case' do
-        expect(subject).to eq(true)
-      end
+      it { is_expected.to eq(true) }
     end
   end
 

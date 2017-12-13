@@ -1,7 +1,9 @@
 require 'car'
 
 RSpec.describe Car do
-  let(:car) { Car.new('KL 22 E 4177', 'White') }
+  let(:car) { Car.new(reg_no, colour) }
+  let(:reg_no) { 'KL 22 E 4177' }
+  let(:colour) { 'White' }
 
   describe '#having_colour?' do
     it 'gives true for the same colour' do
@@ -12,9 +14,12 @@ RSpec.describe Car do
       expect(car.having_colour?('Red')).to eq(false)
     end
 
-    it 'gives true regardless of case' do
-      car = Car.new('KL 22 E 4177', 'white')
-      expect(car.having_colour?('White')).to eq(true)
+    context 'when colour is small letters' do
+      let(:colour) { 'white' }
+
+      it 'gives true regardless of case' do
+        expect(car.having_colour?('White')).to eq(true)
+      end
     end
   end
 

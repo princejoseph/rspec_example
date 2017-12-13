@@ -1,7 +1,7 @@
 require 'car'
 
 RSpec.describe Car do
-  let(:car) { Car.new(reg_no, colour) }
+  let(:car) { described_class.new(reg_no, colour) }
   let(:reg_no) { 'KL 22 E 4177' }
   let(:colour) { 'White' }
 
